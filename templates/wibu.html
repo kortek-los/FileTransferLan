@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>🌸 UwU Upload Terminal desu~! 🌸</title>
+
+  <style>
+    /* Background dan font */
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Poppins', cursive, sans-serif;
+      background: linear-gradient(135deg, #fceaff, #d6c1ff);
+      overflow-x: hidden;
+      color: #6a1b9a;
+      position: relative;
+      height: 100vh;
+    }
+
+    /* Container utama */
+    .container {
+      max-width: 700px;
+      margin: 3em auto;
+      background: rgba(255, 255, 255, 0.85);
+      backdrop-filter: blur(10px);
+      border-radius: 20px;
+      padding: 2.5em 3em;
+      box-shadow: 0 0 25px #ce93d8;
+      position: relative;
+      z-index: 10;
+      text-align: center;
+    }
+
+    /* Judul dengan efek glitch dan glow */
+    h2 {
+      font-size: 2.2em;
+      margin-bottom: 1em;
+      color: #ab47bc;
+      text-shadow: 0 0 8px #f48fb1;
+      position: relative;
+      display: inline-block;
+      animation: glitch-pink 2s infinite, glow-pulse 3s ease-in-out infinite;
+    }
+
+    /* Input file dan tombol */
+    input[type="file"],
+    input[type="submit"] {
+      border-radius: 25px;
+      border: 2px solid #ab47bc;
+      padding: 0.8em 1.5em;
+      font-size: 1.1em;
+      color: #6a1b9a;
+      background: #f8bbd0;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      width: 100%;
+      margin-bottom: 1.2em;
+      font-family: 'Poppins', cursive, sans-serif;
+      box-shadow: 0 0 6px #ce93d8;
+    }
+    input[type="submit"]:hover {
+      background: #ce93d8;
+      color: white;
+      box-shadow: 0 0 15px #ce93d8;
+      animation: pulse-scale 2.5s infinite;
+    }
+
+    /* Progress bar */
+    .progress-container {
+      background: #f3e5f5;
+      border: 1px solid #ab47bc;
+      border-radius: 12px;
+      overflow: hidden;
+      margin-top: 10px;
+      height: 22px;
+      box-shadow: 0 0 6px #ce93d8 inset;
+    }
+
+    .progress-bar {
+      height: 100%;
+      background: #ab47bc;
+      width: 0%;
+      border-radius: 12px;
+      transition: width 0.3s ease-in-out;
+      box-shadow: 0 0 10px #ce93d8;
+    }
+
+    /* Status upload */
+    #status {
+      font-weight: 600;
+      margin-top: 1em;
+      color: #ab47bc;
+      text-shadow: 0 0 6px #f48fb1;
+      animation: glitch-pink 3s infinite, glow-pulse 3s ease-in-out infinite;
+      display: inline-block;
+    }
+
+    /* List file */
+    ul {
+      list-style: none;
+      padding: 0;
+      margin-top: 2.5em;
+      position: relative;
+      z-index: 10;
+    }
+    li {
+      background: #f9eaff;
+      margin-bottom: 12px;
+      padding: 12px 20px;
+      border-radius: 15px;
+      box-shadow: 0 0 10px #ce93d8;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      animation: glitch-pink 4s infinite;
+      font-weight: 500;
+      color: #7b1fa2;
+      position: relative;
+    }
+    a.download-btn {
+      background: #ab47bc;
+      color: white;
+      padding: 7px 14px;
+      border-radius: 20px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: background 0.3s ease;
+      box-shadow: 0 0 8px #ce93d8;
+    }
+    a.download-btn:hover {
+      background: #7b1fa2;
+      box-shadow: 0 0 15px #7b1fa2;
+    }
+
+    /* Footer */
+    footer {
+      margin-top: 3em;
+      font-size: 0.85em;
+      color: #9c64a6;
+      text-align: center;
+      position: relative;
+      z-index: 10;
+      animation: glitch-pink 5s infinite, glow-pulse 3s ease-in-out infinite;
+    }
+    footer a {
+      color: #7b1fa2;
+      text-decoration: underline;
+      font-weight: 600;
+    }
+
+    /* Efek glitch warna pink/ungu */
+    @keyframes glitch-pink {
+      0% {
+        text-shadow: 2px 0 #f48fb1, -2px 0 #ce93d8;
+        transform: skew(-1deg);
+      }
+      25% {
+        text-shadow: -2px 0 #ce93d8, 2px 0 #f48fb1;
+        transform: scale(1.02);
+      }
+      50% {
+        text-shadow: 2px 0 #e1bee7, -2px 0 #ba68c8;
+        transform: scale(1.04);
+      }
+      75% {
+        text-shadow: -2px 0 #ba68c8, 2px 0 #e1bee7;
+        transform: scale(0.98);
+      }
+      100% {
+        text-shadow: none;
+        transform: none;
+      }
+    }
+
+    /* Glow lembut berulang */
+    @keyframes glow-pulse {
+      0%, 100% {
+        text-shadow: 0 0 8px #f48fb1, 0 0 20px #ce93d8;
+      }
+      50% {
+        text-shadow: 0 0 16px #f48fb1, 0 0 30px #ce93d8;
+      }
+    }
+
+    /* Animasi berdenyut */
+    @keyframes pulse-scale {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.05); }
+    }
+
+    /* Floating naik turun */
+    .floating {
+      animation: floating-anim 4s ease-in-out infinite;
+      display: inline-block;
+      user-select: none;
+    }
+    @keyframes floating-anim {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+    }
+
+    /* Partikel bunga sakura jatuh */
+    .sakura-petal {
+      position: fixed;
+      top: -20px;
+      width: 15px;
+      height: 15px;
+      background: radial-gradient(circle at 50% 50%, #f8bbd0 60%, transparent 80%);
+      border-radius: 50% 50% 50% 50% / 70% 70% 30% 30%;
+      opacity: 0.8;
+      pointer-events: none;
+      animation-name: fall-sakura;
+      animation-timing-function: linear;
+      animation-iteration-count: infinite;
+      z-index: 5;
+    }
+    @keyframes fall-sakura {
+      0% {
+        transform: translateY(0) rotate(0deg);
+        opacity: 0.8;
+      }
+      100% {
+        transform: translateY(110vh) rotate(360deg);
+        opacity: 0;
+      }
+    }
+
+    /* Sparkle gemerlap */
+    .sparkle {
+      position: absolute;
+      width: 6px;
+      height: 6px;
+      background: #f48fb1;
+      border-radius: 50%;
+      box-shadow: 0 0 8px #f48fb1;
+      animation: sparkle-flicker 1.5s infinite;
+      user-select: none;
+    }
+    @keyframes sparkle-flicker {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.3; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <h2>🌸 <span class="floating">UwU</span> Upload Terminal desu~! <span class="floating">🌸</span></h2>
+
+    <form id="upload-form">
+      <input type="file" name="file" id="file" multiple required />
+      <input type="submit" value="➤ Kirim Berkas, Onegai!" />
+    </form>
+
+    <div class="progress-container">
+      <div class="progress-bar" id="progress-bar"></div>
+    </div>
+    <p id="status">✧٩(•́⌄•́๑)و✧ Tunggu ya, upload nya lagi berjalan~</p>
+
+    <h3>📁 Berkas yang tersimpan:</h3>
+    <ul id="file-list">
+      {% for f in files %}
+        <li>
+          <span>{{ f }}</span>
+          <a class="download-btn" href="/uploads/{{ f }}" download>DOWNLOAD</a>
+        </li>
+      {% endfor %}
+    </ul>
+  </div>
+
+  <footer>
+    📂 Baca file 
+    <a href="/readme" target="_blank" rel="noopener noreferrer">Read.Me</a> sebelum ngapa-ngapain ya~  
+    <br />
+    Coded with love by 
+    <a href="https://discord.com/users/nyawme" target="_blank" rel="noopener noreferrer">Nyawme 💖</a> |  
+    <a href="https://github.com/kortek-los" target="_blank" rel="noopener noreferrer">GitHub</a>
+  </footer>
+
+  <!-- Partikel bunga sakura jatuh -->
+  <script>
+    const petalsCount = 20;
+    function createPetal() {
+      const petal = document.createElement('div');
+      petal.classList.add('sakura-petal');
+      petal.style.left = Math.random() * 100 + 'vw';
+      petal.style.animationDuration = (5 + Math.random() * 7) + 's';
+      petal.style.animationDelay = Math.random() * 10 + 's';
+      document.body.appendChild(petal);
+
+      setTimeout(() => {
+        petal.remove();
+        createPetal();
+      }, (parseFloat(petal.style.animationDuration) + parseFloat(petal.style.animationDelay)) * 1000);
+    }
+    for (let i = 0; i < petalsCount; i++) {
+      createPetal();
+    }
+  </script>
+
+  <!-- Sparkle partikel kecil pada judul -->
+  <script>
+    const container = document.querySelector('.container');
+    function createSparkle() {
+      const sparkle = document.createElement('div');
+      sparkle.classList.add('sparkle');
+      sparkle.style.top = (container.offsetTop + Math.random() * container.offsetHeight) + 'px';
+      sparkle.style.left = (container.offsetLeft + Math.random() * container.offsetWidth) + 'px';
+      sparkle.style.animationDuration = (1 + Math.random() * 1) + 's';
+      container.appendChild(sparkle);
+
+      setTimeout(() => {
+        sparkle.remove();
+        createSparkle();
+      }, (parseFloat(sparkle.style.animationDuration) * 1000));
+    }
+    for (let i = 0; i < 15; i++) {
+      createSparkle();
+    }
+  </script>
+
+  <!-- Upload logic -->
+  <script>
+    document.getElementById('upload-form').addEventListener('submit', function(e) {
+      e.preventDefault();
+      const files = document.getElementById('file').files;
+      const formData = new FormData();
+      for (let i = 0; i < files.length; i++) {
+        formData.append('file', files[i]);
+      }
+
+      const xhr = new XMLHttpRequest();
+      xhr.open('POST', '/', true);
+
+      xhr.upload.onprogress = function(e) {
+        if (e.lengthComputable) {
+          const percent = (e.loaded / e.total) * 100;
+          document.getElementById('progress-bar').style.width = percent + '%';
+        }
+      };
+
+      xhr.onload = function() {
+        if (xhr.status === 200) {
+          document.getElementById('status').innerText = '✔️ Berhasil upload nya, terima kasih ya~!';
+          document.getElementById('progress-bar').style.width = '0%';
+
+          const newFiles = JSON.parse(xhr.responseText);
+          const list = document.getElementById('file-list');
+          newFiles.forEach(file => {
+            const li = document.createElement('li');
+            const span = document.createElement('span');
+            span.textContent = file;
+            const a = document.createElement('a');
+            a.href = '/uploads/' + file;
+            a.textContent = 'DOWNLOAD';
+            a.className = 'download-btn';
+            a.download = file;
+            li.appendChild(span);
+            li.appendChild(a);
+            list.appendChild(li);
+          });
+        } else {
+          document.getElementById('status').innerText = '❌ Upload gagal, coba lagi ya~';
+        }
+      };
+
+      xhr.send(formData);
+    });
+  </script>
+
+</body>
+</html>
