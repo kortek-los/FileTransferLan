@@ -1,6 +1,6 @@
 [Setup]
 AppName=File Transfer LAN
-AppVersion=1.0
+AppVersion=1.1
 DefaultDirName={pf}\FileTransferLan
 DefaultGroupName=FileTransferLan
 UninstallDisplayIcon={app}\icon.ico
