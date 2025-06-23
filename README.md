@@ -54,7 +54,8 @@ Solusi ringan dan cepat untuk kirim file dari HP ke PC tanpa internet, tanpa kab
 ## 🛠️ Cara Pakai
 
 1. 📦 **Unduh Installer**  
-   [Klik di sini untuk unduh FileTransferLanSetup.exe](https://github.com/kortek-los/FileTransferLan/raw/main/FileTransferLanSetup.exe)
+📥 [Klik untuk Unduh Installer](https://github.com/kortek-los/FileTransferLan/raw/main/File%20Transfer%20Lan%20Installer.exe)
+
 
 
 2. 🔧 **Jalankan Setup**  
