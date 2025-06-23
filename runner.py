@@ -1,14 +1,16 @@
+import subprocess
 import os
 
-# Baca mode dari file
-lang_mode = 'wibu'
-if os.path.exists('language_mode.txt'):
-    with open('language_mode.txt', 'r') as f:
-        lang_mode = f.read().strip().lower()
+def run_launcher():
+    # Pastikan path file .bat sesuai lokasi file launcher.bat
+    bat_path = os.path.join(os.getcwd(), "launcher.bat")
 
-# Ganti warna terminal tergantung mode
-if os.name == 'nt':  # Hanya Windows
-    if lang_mode == 'kasar':
-        os.system('color 0A')  # Hijau terang di hitam
-    else:
-        os.system('color 0D')  # Pink di hitam
+    try:
+        # Menjalankan launcher.bat dan menunggu selesai
+        subprocess.run([bat_path], check=True, shell=True)
+        print("launcher.bat berhasil dijalankan.")
+    except subprocess.CalledProcessError as e:
+        print(f"Terjadi kesalahan saat menjalankan launcher.bat: {e}")
+
+if __name__ == "__main__":
+    run_launcher()

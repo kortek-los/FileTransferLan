@@ -2,263 +2,199 @@
 <html lang="id">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>🌸 UwU Upload Terminal desu~! 🌸</title>
-
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>🌸 UwU Upload Terminal 🌸</title>
   <style>
-    /* Background dan font */
+  * { box-sizing: border-box; }
+
+  body {
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(135deg, #fceaff, #d6c1ff);
+    color: #6a1b9a;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 1em;
+  }
+
+  .container {
+    background: rgba(255, 255, 255, 0.9);
+    backdrop-filter: blur(5px);
+    border-radius: 20px;
+    box-shadow: 0 0 12px #ce93d8;
+    width: 100%;
+    max-width: 480px;
+    padding: 1.5em;
+    overflow-y: auto;
+  }
+
+  h2 {
+    font-size: 1.4em;
+    text-align: center;
+    color: #ab47bc;
+    text-shadow: 0 0 6px #f48fb1;
+    animation: glitch-pink 2s infinite;
+  }
+
+  input[type="file"] {
+    display: block;
+    width: 100%;
+    margin: 1em 0;
+    font-size: 1em;
+  }
+
+  input[type="submit"] {
+    width: 100%;
+    padding: 0.7em;
+    font-size: 1em;
+    background: #f8bbd0;
+    border: 2px solid #ab47bc;
+    border-radius: 25px;
+    cursor: pointer;
+    color: #6a1b9a;
+    box-shadow: 0 0 6px #ce93d8;
+    transition: 0.3s;
+  }
+
+  input[type="submit"]:hover {
+    background: #ce93d8;
+    color: white;
+  }
+
+  .progress-container {
+    margin-top: 1em;
+    height: 16px;
+    background: #f3e5f5;
+    border-radius: 12px;
+    overflow: hidden;
+  }
+
+  .progress-bar {
+    height: 100%;
+    width: 0%;
+    background: #ab47bc;
+    transition: width 0.3s ease;
+  }
+
+  #status {
+    margin-top: 1em;
+    font-weight: bold;
+    text-align: center;
+    color: #ab47bc;
+    font-size: 0.9em;
+  }
+
+  ul {
+    padding: 0;
+    list-style: none;
+    margin-top: 1em;
+  }
+
+  li {
+    background: #f9eaff;
+    padding: 0.6em 0.8em;
+    border-radius: 10px;
+    margin-bottom: 0.6em;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: #7b1fa2;
+    font-size: 0.85em;
+    box-shadow: 0 0 6px #ce93d8;
+    word-break: break-all;
+  }
+
+  .download-btn {
+    background: #ab47bc;
+    color: white;
+    padding: 0.3em 0.8em;
+    border-radius: 12px;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 0.75em;
+  }
+
+  h4 {
+    margin-top: 1em;
+    color: #7b1fa2;
+    font-size: 0.95em;
+  }
+
+  footer {
+    text-align: center;
+    margin-top: 2em;
+    font-size: 0.8em;
+    color: #9c64a6;
+  }
+
+  footer a {
+    color: #7b1fa2;
+    font-weight: bold;
+    text-decoration: underline;
+  }
+
+  @keyframes glitch-pink {
+    0% { text-shadow: 2px 0 #f48fb1, -2px 0 #ce93d8; }
+    25% { text-shadow: -2px 0 #ce93d8, 2px 0 #f48fb1; }
+    50% { text-shadow: 2px 0 #e1bee7, -2px 0 #ba68c8; }
+    75% { text-shadow: -2px 0 #ba68c8, 2px 0 #e1bee7; }
+    100% { text-shadow: none; }
+  }
+
+  /* Untuk layar lebih besar (desktop) */
+  @media (min-width: 768px) {
     body {
-      margin: 0;
-      padding: 0;
-      font-family: 'Poppins', cursive, sans-serif;
-      background: linear-gradient(135deg, #fceaff, #d6c1ff);
-      overflow-x: hidden;
-      color: #6a1b9a;
-      position: relative;
-      height: 100vh;
+      padding: 2em 4em;
     }
 
-    /* Container utama */
     .container {
-      max-width: 700px;
-      margin: 3em auto;
-      background: rgba(255, 255, 255, 0.85);
-      backdrop-filter: blur(10px);
-      border-radius: 20px;
-      padding: 2.5em 3em;
-      box-shadow: 0 0 25px #ce93d8;
-      position: relative;
-      z-index: 10;
-      text-align: center;
+      max-width: 600px;
+      padding: 2.5em;
     }
 
-    /* Judul dengan efek glitch dan glow */
     h2 {
-      font-size: 2.2em;
-      margin-bottom: 1em;
-      color: #ab47bc;
-      text-shadow: 0 0 8px #f48fb1;
-      position: relative;
-      display: inline-block;
-      animation: glitch-pink 2s infinite, glow-pulse 3s ease-in-out infinite;
+      font-size: 1.8em;
     }
 
-    /* Input file dan tombol */
-    input[type="file"],
     input[type="submit"] {
-      border-radius: 25px;
-      border: 2px solid #ab47bc;
-      padding: 0.8em 1.5em;
       font-size: 1.1em;
-      color: #6a1b9a;
-      background: #f8bbd0;
-      cursor: pointer;
-      transition: all 0.3s ease;
-      width: 100%;
-      margin-bottom: 1.2em;
-      font-family: 'Poppins', cursive, sans-serif;
-      box-shadow: 0 0 6px #ce93d8;
-    }
-    input[type="submit"]:hover {
-      background: #ce93d8;
-      color: white;
-      box-shadow: 0 0 15px #ce93d8;
-      animation: pulse-scale 2.5s infinite;
     }
 
-    /* Progress bar */
-    .progress-container {
-      background: #f3e5f5;
-      border: 1px solid #ab47bc;
-      border-radius: 12px;
-      overflow: hidden;
-      margin-top: 10px;
-      height: 22px;
-      box-shadow: 0 0 6px #ce93d8 inset;
-    }
-
-    .progress-bar {
-      height: 100%;
-      background: #ab47bc;
-      width: 0%;
-      border-radius: 12px;
-      transition: width 0.3s ease-in-out;
-      box-shadow: 0 0 10px #ce93d8;
-    }
-
-    /* Status upload */
     #status {
-      font-weight: 600;
-      margin-top: 1em;
-      color: #ab47bc;
-      text-shadow: 0 0 6px #f48fb1;
-      animation: glitch-pink 3s infinite, glow-pulse 3s ease-in-out infinite;
-      display: inline-block;
+      font-size: 1em;
     }
 
-    /* List file */
-    ul {
-      list-style: none;
-      padding: 0;
-      margin-top: 2.5em;
-      position: relative;
-      z-index: 10;
-    }
     li {
-      background: #f9eaff;
-      margin-bottom: 12px;
-      padding: 12px 20px;
-      border-radius: 15px;
-      box-shadow: 0 0 10px #ce93d8;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      animation: glitch-pink 4s infinite;
-      font-weight: 500;
-      color: #7b1fa2;
-      position: relative;
+      font-size: 1em;
     }
-    a.download-btn {
-      background: #ab47bc;
-      color: white;
-      padding: 7px 14px;
-      border-radius: 20px;
-      text-decoration: none;
-      font-weight: 600;
-      transition: background 0.3s ease;
-      box-shadow: 0 0 8px #ce93d8;
-    }
-    a.download-btn:hover {
-      background: #7b1fa2;
-      box-shadow: 0 0 15px #7b1fa2;
-    }
+  }
+</style>
 
-    /* Footer */
-    footer {
-      margin-top: 3em;
-      font-size: 0.85em;
-      color: #9c64a6;
-      text-align: center;
-      position: relative;
-      z-index: 10;
-      animation: glitch-pink 5s infinite, glow-pulse 3s ease-in-out infinite;
-    }
-    footer a {
-      color: #7b1fa2;
-      text-decoration: underline;
-      font-weight: 600;
-    }
-
-    /* Efek glitch warna pink/ungu */
-    @keyframes glitch-pink {
-      0% {
-        text-shadow: 2px 0 #f48fb1, -2px 0 #ce93d8;
-        transform: skew(-1deg);
-      }
-      25% {
-        text-shadow: -2px 0 #ce93d8, 2px 0 #f48fb1;
-        transform: scale(1.02);
-      }
-      50% {
-        text-shadow: 2px 0 #e1bee7, -2px 0 #ba68c8;
-        transform: scale(1.04);
-      }
-      75% {
-        text-shadow: -2px 0 #ba68c8, 2px 0 #e1bee7;
-        transform: scale(0.98);
-      }
-      100% {
-        text-shadow: none;
-        transform: none;
-      }
-    }
-
-    /* Glow lembut berulang */
-    @keyframes glow-pulse {
-      0%, 100% {
-        text-shadow: 0 0 8px #f48fb1, 0 0 20px #ce93d8;
-      }
-      50% {
-        text-shadow: 0 0 16px #f48fb1, 0 0 30px #ce93d8;
-      }
-    }
-
-    /* Animasi berdenyut */
-    @keyframes pulse-scale {
-      0%, 100% { transform: scale(1); }
-      50% { transform: scale(1.05); }
-    }
-
-    /* Floating naik turun */
-    .floating {
-      animation: floating-anim 4s ease-in-out infinite;
-      display: inline-block;
-      user-select: none;
-    }
-    @keyframes floating-anim {
-      0%, 100% { transform: translateY(0); }
-      50% { transform: translateY(-10px); }
-    }
-
-    /* Partikel bunga sakura jatuh */
-    .sakura-petal {
-      position: fixed;
-      top: -20px;
-      width: 15px;
-      height: 15px;
-      background: radial-gradient(circle at 50% 50%, #f8bbd0 60%, transparent 80%);
-      border-radius: 50% 50% 50% 50% / 70% 70% 30% 30%;
-      opacity: 0.8;
-      pointer-events: none;
-      animation-name: fall-sakura;
-      animation-timing-function: linear;
-      animation-iteration-count: infinite;
-      z-index: 5;
-    }
-    @keyframes fall-sakura {
-      0% {
-        transform: translateY(0) rotate(0deg);
-        opacity: 0.8;
-      }
-      100% {
-        transform: translateY(110vh) rotate(360deg);
-        opacity: 0;
-      }
-    }
-
-    /* Sparkle gemerlap */
-    .sparkle {
-      position: absolute;
-      width: 6px;
-      height: 6px;
-      background: #f48fb1;
-      border-radius: 50%;
-      box-shadow: 0 0 8px #f48fb1;
-      animation: sparkle-flicker 1.5s infinite;
-      user-select: none;
-    }
-    @keyframes sparkle-flicker {
-      0%, 100% { opacity: 1; }
-      50% { opacity: 0.3; }
-    }
-  </style>
 </head>
 <body>
 
   <div class="container">
-    <h2>🌸 <span class="floating">UwU</span> Upload Terminal desu~! <span class="floating">🌸</span></h2>
+    <h2>🌸 UwU Upload Terminal 🌸</h2>
 
-    <form id="upload-form">
-      <input type="file" name="file" id="file" multiple required />
+    <form id="upload-form" enctype="multipart/form-data" method="POST">
+      <input type="file" id="file" name="file" multiple required />
       <input type="submit" value="➤ Kirim Berkas, Onegai!" />
     </form>
+
+    <h4>📝 File yang akan dikirim:</h4>
+    <ul id="selected-files">
+      <li style="color: gray;">(belum ada file dipilih)</li>
+    </ul>
 
     <div class="progress-container">
       <div class="progress-bar" id="progress-bar"></div>
     </div>
+
     <p id="status">✧٩(•́⌄•́๑)و✧ Tunggu ya, upload nya lagi berjalan~</p>
 
-    <h3>📁 Berkas yang tersimpan:</h3>
+    <h4>📁 Berkas yang tersimpan:</h4>
     <ul id="file-list">
       {% for f in files %}
         <li>
@@ -267,107 +203,93 @@
         </li>
       {% endfor %}
     </ul>
+
+    <footer>
+      📂 Baca dulu 
+      <a href="/readme" target="_blank">Read.Me</a> sebelum ngapa-ngapain ya~<br />
+      By <a href="https://discord.com/users/nyawme" target="_blank">Nyawme 💖</a>
+    </footer>
   </div>
 
-  <footer>
-    📂 Baca file 
-    <a href="/readme" target="_blank" rel="noopener noreferrer">Read.Me</a> sebelum ngapa-ngapain ya~  
-    <br />
-    Coded with love by 
-    <a href="https://discord.com/users/nyawme" target="_blank" rel="noopener noreferrer">Nyawme 💖</a> |  
-    <a href="https://github.com/kortek-los" target="_blank" rel="noopener noreferrer">GitHub</a>
-  </footer>
-
-  <!-- Partikel bunga sakura jatuh -->
   <script>
-    const petalsCount = 20;
-    function createPetal() {
-      const petal = document.createElement('div');
-      petal.classList.add('sakura-petal');
-      petal.style.left = Math.random() * 100 + 'vw';
-      petal.style.animationDuration = (5 + Math.random() * 7) + 's';
-      petal.style.animationDelay = Math.random() * 10 + 's';
-      document.body.appendChild(petal);
+  const fileInput = document.getElementById('file');
+  const selectedList = document.getElementById('selected-files');
+  const statusText = document.getElementById('status');
 
-      setTimeout(() => {
-        petal.remove();
-        createPetal();
-      }, (parseFloat(petal.style.animationDuration) + parseFloat(petal.style.animationDelay)) * 1000);
-    }
-    for (let i = 0; i < petalsCount; i++) {
-      createPetal();
-    }
-  </script>
+  // Notif awal
+  statusText.innerText = '✦ Silakan upload berkasnya dulu ya, Tuan~';
 
-  <!-- Sparkle partikel kecil pada judul -->
-  <script>
-    const container = document.querySelector('.container');
-    function createSparkle() {
-      const sparkle = document.createElement('div');
-      sparkle.classList.add('sparkle');
-      sparkle.style.top = (container.offsetTop + Math.random() * container.offsetHeight) + 'px';
-      sparkle.style.left = (container.offsetLeft + Math.random() * container.offsetWidth) + 'px';
-      sparkle.style.animationDuration = (1 + Math.random() * 1) + 's';
-      container.appendChild(sparkle);
+  fileInput.addEventListener('change', function () {
+    selectedList.innerHTML = '';
+    const files = fileInput.files;
 
-      setTimeout(() => {
-        sparkle.remove();
-        createSparkle();
-      }, (parseFloat(sparkle.style.animationDuration) * 1000));
+    if (files.length === 0) {
+      selectedList.innerHTML = '<li style="color: gray;">(belum ada file dipilih)</li>';
+      statusText.innerText = '✦ Silakan upload berkasnya dulu ya, Tuan~';
+      return;
     }
-    for (let i = 0; i < 15; i++) {
-      createSparkle();
-    }
-  </script>
 
-  <!-- Upload logic -->
-  <script>
-    document.getElementById('upload-form').addEventListener('submit', function(e) {
-      e.preventDefault();
-      const files = document.getElementById('file').files;
-      const formData = new FormData();
-      for (let i = 0; i < files.length; i++) {
-        formData.append('file', files[i]);
+    for (let i = 0; i < files.length; i++) {
+      const li = document.createElement('li');
+      li.textContent = '✅ ' + files[i].name;
+      selectedList.appendChild(li);
+    }
+
+    // Saat user memilih file, ubah status
+    statusText.innerText = '➤ Siap mengirim! Klik tombol di bawah ya~';
+  });
+
+  document.getElementById('upload-form').addEventListener('submit', function (e) {
+    e.preventDefault();
+
+    const files = fileInput.files;
+    if (files.length === 0) {
+      alert("Belum ada file dipilih, Tuan~");
+      return;
+    }
+
+    const formData = new FormData();
+    for (let i = 0; i < files.length; i++) {
+      formData.append('file', files[i]);
+    }
+
+    // Status saat upload berlangsung
+    statusText.innerText = '✧٩(•́⌄•́๑)و✧ Tunggu ya, upload-nya lagi berjalan~';
+
+    const xhr = new XMLHttpRequest();
+    xhr.open('POST', '/', true);
+
+    xhr.upload.onprogress = function (e) {
+      if (e.lengthComputable) {
+        const percent = (e.loaded / e.total) * 100;
+        document.getElementById('progress-bar').style.width = percent + '%';
       }
+    };
 
-      const xhr = new XMLHttpRequest();
-      xhr.open('POST', '/', true);
+    xhr.onload = function () {
+      if (xhr.status === 200) {
+        statusText.innerText = '✔️ Upload selesai, terima kasih!';
+        document.getElementById('progress-bar').style.width = '0%';
 
-      xhr.upload.onprogress = function(e) {
-        if (e.lengthComputable) {
-          const percent = (e.loaded / e.total) * 100;
-          document.getElementById('progress-bar').style.width = percent + '%';
-        }
-      };
+        const newFiles = JSON.parse(xhr.responseText);
+        const list = document.getElementById('file-list');
+        newFiles.forEach(file => {
+          const li = document.createElement('li');
+          li.innerHTML = `
+            <span>${file}</span>
+            <a class="download-btn" href="/uploads/${file}" download>DOWNLOAD</a>
+          `;
+          list.appendChild(li);
+        });
+      } else {
+        statusText.innerText = '❌ Upload gagal, coba lagi ya~';
+      }
+    };
 
-      xhr.onload = function() {
-        if (xhr.status === 200) {
-          document.getElementById('status').innerText = '✔️ Berhasil upload nya, terima kasih ya~!';
-          document.getElementById('progress-bar').style.width = '0%';
+    xhr.send(formData);
+  });
+</script>
 
-          const newFiles = JSON.parse(xhr.responseText);
-          const list = document.getElementById('file-list');
-          newFiles.forEach(file => {
-            const li = document.createElement('li');
-            const span = document.createElement('span');
-            span.textContent = file;
-            const a = document.createElement('a');
-            a.href = '/uploads/' + file;
-            a.textContent = 'DOWNLOAD';
-            a.className = 'download-btn';
-            a.download = file;
-            li.appendChild(span);
-            li.appendChild(a);
-            list.appendChild(li);
-          });
-        } else {
-          document.getElementById('status').innerText = '❌ Upload gagal, coba lagi ya~';
-        }
-      };
-
-      xhr.send(formData);
-    });
-  </script>
 
 </body>
 </html>

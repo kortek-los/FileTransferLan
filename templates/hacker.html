@@ -4,10 +4,16 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>TERMINAL UPLOAD - RESTRICTED ACCESS</title>
-  
-  <!-- Matrix Rain Background -->
   <style>
-    /* Canvas untuk partikel */
+    html, body {
+      margin: 0;
+      padding: 0;
+      font-family: monospace;
+      background: #000;
+      color: #0f0;
+      overflow-x: hidden;
+    }
+
     #matrix-canvas {
       position: fixed;
       top: 0; left: 0;
@@ -18,161 +24,179 @@
       background-color: #000;
     }
 
-    body, .container {
+    .container {
       position: relative;
       z-index: 1;
-    }
-
-    body {
-      background-color: #000;
-      color: #00ff00;
-      font-family: monospace;
-      margin: 0;
-      padding: 0;
-      overflow-x: hidden;
-    }
-
-    .container {
-      max-width: 700px;
-      margin: 4em auto;
-      background-color: #050505;
-      padding: 2em;
-      border: 1px solid #00ff00;
+      max-width: 100%;
+      width: 95%;
+      margin: 2em auto;
+      background: #050505;
+      padding: 1em;
+      border: 1px solid #0f0;
       border-radius: 10px;
       box-shadow: 0 0 15px #00ff00;
+      box-sizing: border-box;
     }
 
     h2 {
       text-align: center;
-      font-size: 1.5em;
-      text-shadow: 0 0 6px #00ff00;
+      font-size: 1.2em;
       margin-bottom: 1em;
-      position: relative;
-      display: inline-block;
-      animation: glitch-text 1s infinite;
+      text-shadow: 0 0 5px #00ff00;
+      animation: glitch-text 2s infinite;
+      word-break: break-word;
     }
 
-    input[type="file"],
+    input[type="file"] {
+    width: 100%;
+    padding: 0.6em;
+    margin-bottom: 1em;
+    background: transparent;  /* ubah dari #000 */
+    color: #0f0;
+    border: none;
+    border-radius: 4px;
+    font-size: 0.95em;
+  }
+
+  input[type="file"]::-webkit-file-upload-button {
+    background: transparent; /* ubah dari #0f0 */
+    color: #0f0;
+    border: 1px solid #0f0;
+    padding: 0.4em 1em;
+    border-radius: 4px;
+    cursor: pointer;
+    font-family: monospace;
+  }
+
+  input[type="file"]::-webkit-file-upload-button:hover {
+    background: #0f0;
+    color: #000;
+  }
+
+
     input[type="submit"] {
-      background-color: #000;
-      color: #00ff00;
-      border: 1px solid #00ff00;
-      padding: 0.8em;
       width: 100%;
+      padding: 0.6em;
       margin-bottom: 1em;
+      border: 1px solid #00ff00;
+      background: #000;
+      color: #0f0;
       border-radius: 4px;
-      font-family: monospace;
+      font-size: 0.95em;
     }
 
     input[type="submit"]:hover {
-      background-color: #00ff00;
+      background: #0f0;
       color: #000;
       cursor: pointer;
     }
 
     .progress-container {
       background: #111;
-      border: 1px solid #00ff00;
+      border: 1px solid #0f0;
       border-radius: 5px;
       overflow: hidden;
       margin-top: 10px;
     }
 
     .progress-bar {
-      height: 18px;
-      background: #00ff00;
+      height: 16px;
+      background: #0f0;
       width: 0%;
       transition: width 0.2s ease-in-out;
     }
 
     #status {
       margin-top: 0.5em;
-      font-size: 0.9em;
+      font-size: 0.85em;
+      text-align: center;
       color: #0f0;
-      text-shadow: 0 0 4px #00ff00;
-      animation: glitch-text 2s infinite;
-      display: inline-block;
     }
 
     ul {
       list-style: none;
       padding: 0;
-      margin-top: 2em;
+      margin-top: 1em;
     }
 
     li {
-      background-color: #111;
-      border: 1px solid #00ff00;
-      padding: 10px;
-      margin-bottom: 10px;
-      border-radius: 5px;
+      background: #111;
+      border: 1px solid #0f0;
+      border-radius: 4px;
+      padding: 0.8em;
+      margin-bottom: 0.7em;
       display: flex;
-      justify-content: space-between;
-      animation: glitch-text 3s infinite;
+      flex-direction: column;
+      gap: 0.5em;
+      word-break: break-word;
     }
 
     a.download-btn {
-      color: #00ff00;
-      text-decoration: none;
-      background-color: #000;
-      border: 1px solid #00ff00;
-      padding: 6px 10px;
+      display: inline-block;
+      padding: 0.5em 1em;
+      border: 1px solid #0f0;
       border-radius: 4px;
-      transition: background-color 0.3s, color 0.3s;
+      background: #000;
+      color: #0f0;
+      text-align: center;
+      text-decoration: none;
+      font-size: 0.85em;
     }
 
     a.download-btn:hover {
-      background-color: #00ff00;
+      background: #0f0;
       color: #000;
     }
 
-    /* Glitch Effect */
-    .glitch-footer {
-      position: relative;
-      display: inline-block;
-      max-width: 700px;
+    footer {
       text-align: center;
-      color: #00ff00;
-      font-family: monospace;
-      font-size: 0.85em;
+      color: #0f0;
+      font-size: 0.75em;
+      margin-top: 2em;
       animation: glitch-text 4s infinite;
     }
 
-    /* Keyframes glitch */
+    footer a {
+      color: #0f0;
+      text-decoration: underline;
+    }
+
     @keyframes glitch-text {
-      0% {
-        text-shadow:
-          2px 0 red,
-          -2px 0 blue;
-        transform: skew(-2deg);
+      0% { text-shadow: 2px 0 red, -2px 0 blue; transform: skew(-2deg); }
+      20% { text-shadow: -2px 0 red, 2px 0 blue; transform: scale(1.01); }
+      40% { text-shadow: 2px 0 lime, -2px 0 magenta; transform: scale(1.02); }
+      60% { text-shadow: -2px 0 cyan, 2px 0 yellow; transform: scale(0.98); }
+      80%, 100% { text-shadow: none; transform: none; }
+    }
+
+    @media (min-width: 768px) {
+      .container {
+        max-width: 600px;
+        padding: 2em;
       }
-      20% {
-        text-shadow:
-          -2px 0 red,
-          2px 0 blue;
-        transform: scale(1.01);
+
+      h2 {
+        font-size: 1.5em;
       }
-      40% {
-        text-shadow:
-          2px 0 lime,
-          -2px 0 magenta;
-        transform: scale(1.02);
+
+      input[type="file"],
+      input[type="submit"] {
+        font-size: 1em;
       }
-      60% {
-        text-shadow:
-          -2px 0 cyan,
-          2px 0 yellow;
-        transform: scale(0.98);
+
+      a.download-btn {
+        width: fit-content;
       }
-      80%, 100% {
-        text-shadow: none;
-        transform: none;
+
+      li {
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
       }
     }
   </style>
 </head>
 <body>
-  <!-- Canvas partikel Matrix -->
   <canvas id="matrix-canvas"></canvas>
 
   <div class="container">
@@ -183,12 +207,17 @@
       <input type="submit" value="EXECUTE UPLOAD" />
     </form>
 
+    <h4>📋 Selected Files</h4>
+    <ul id="selected-files">
+      <li style="color: gray;">(no file selected)</li>
+    </ul>
+
     <div class="progress-container">
       <div class="progress-bar" id="progress-bar"></div>
     </div>
-    <p id="status"></p>
+    <p id="status">⏳ Waiting for file input...</p>
 
-    <h3>📁 STORED FILES</h3>
+    <h4>📁 STORED FILES</h4>
     <ul id="file-list">
       {% for f in files %}
         <li>
@@ -199,140 +228,105 @@
     </ul>
   </div>
 
-<footer style="margin-top: 4em; display: flex; justify-content: center; width: 100%;">
-  <div class="glitch-footer">
-    <hr style="border: none; border-top: 1px dashed #00ff00; margin: 2em 0;">
-    <p>
-      📂 Baca file 
-      <a href="https://github.com/kortek-los/FileTransferLan/blob/main/README.md" target="_blank" style="color: #00ff00; text-decoration: underline;">
-        Read.Me
-      </a> sebelum lo ngapa-ngapain. Atau tanggung sendiri akibatnya.
-    </p>
-    <p>
-      Coded in the shadows by 
-      <a href="https://discord.com/users/nyawme" target="_blank" style="color: #00ff00; text-decoration: none;">
-        ☠️ Nyawme
-      </a> &nbsp;|&nbsp;
-      <a href="https://github.com/kortek-los" target="_blank" style="color: #00ff00; text-decoration: none;">
-        🧬 GitHub (akses dibatasi)
-      </a>
-    </p>
-  </div>
-</footer>
+  <footer>
+    <hr style="border: none; border-top: 1px dashed #0f0; margin: 2em 0;">
+    <p>📂 Baca <a href="https://github.com/kortek-los/FileTransferLan/blob/main/README.md" target="_blank">Read.Me</a> sebelum lo ngapa-ngapain.</p>
+    <p>☠️ By <a href="https://discord.com/users/nyawme" target="_blank">Nyawme</a> | 🧬 <a href="https://github.com/kortek-los" target="_blank">GitHub</a></p>
+  </footer>
 
-<script>
-  // Efek glitch acak di footer (sudah ada tapi aku pertajam sedikit)
-  function randomGlitch() {
-    const footer = document.querySelector('.glitch-footer');
-    footer.classList.add('glitch-active');
-    setTimeout(() => {
-      footer.classList.remove('glitch-active');
-    }, 600);
-    const next = Math.floor(Math.random() * 7000) + 5000;
-    setTimeout(randomGlitch, next);
-  }
-  window.addEventListener('load', () => {
-    setTimeout(randomGlitch, 3000);
-  });
+  <script>
+    // Matrix rain effect
+    const canvas = document.getElementById('matrix-canvas');
+    const ctx = canvas.getContext('2d');
+    let width, height, columns, drops;
 
-  // Upload logic (tetap sama)
-  document.getElementById('upload-form').addEventListener('submit', function(e) {
-    e.preventDefault();
-    const files = document.getElementById('file').files;
-    const formData = new FormData();
-    for (let i = 0; i < files.length; i++) {
-      formData.append('file', files[i]);
+    function initMatrix() {
+      width = window.innerWidth;
+      height = window.innerHeight;
+      canvas.width = width;
+      canvas.height = height;
+      columns = Math.floor(width / 16);
+      drops = Array(columns).fill(0);
+      ctx.font = '16px monospace';
     }
 
-    const xhr = new XMLHttpRequest();
-    xhr.open('POST', '/', true);
-
-    xhr.upload.onprogress = function(e) {
-      if (e.lengthComputable) {
-        const percent = (e.loaded / e.total) * 100;
-        document.getElementById('progress-bar').style.width = percent + '%';
+    function drawMatrix() {
+      ctx.fillStyle = "rgba(0,0,0,0.1)";
+      ctx.fillRect(0, 0, width, height);
+      ctx.fillStyle = "#0F0";
+      for (let i = 0; i < columns; i++) {
+        const char = String.fromCharCode(0x30A0 + Math.random() * 96);
+        ctx.fillText(char, i * 16, drops[i] * 16);
+        if (drops[i] * 16 > height && Math.random() > 0.975) drops[i] = 0;
+        drops[i]++;
       }
+    }
+
+    window.addEventListener('resize', initMatrix);
+    window.onload = () => {
+      initMatrix();
+      setInterval(drawMatrix, 33);
     };
 
-    xhr.onload = function() {
-      if (xhr.status === 200) {
-        document.getElementById('status').innerText = '✔️ Upload complete. File injected.';
-        document.getElementById('progress-bar').style.width = '0%';
+    // Upload script
+    const fileInput = document.getElementById('file');
+    const selectedList = document.getElementById('selected-files');
+    const status = document.getElementById('status');
 
-        const newFiles = JSON.parse(xhr.responseText);
-        const list = document.getElementById('file-list');
-        newFiles.forEach(file => {
-          const li = document.createElement('li');
-          const span = document.createElement('span');
-          span.textContent = file;
-          const a = document.createElement('a');
-          a.href = '/uploads/' + file;
-          a.textContent = 'DOWNLOAD';
-          a.className = 'download-btn';
-          a.download = file;
-          li.appendChild(span);
-          li.appendChild(a);
-          list.appendChild(li);
-        });
-      } else {
-        document.getElementById('status').innerText = '❌ Upload failed. Target refused injection.';
+    fileInput.addEventListener('change', () => {
+      selectedList.innerHTML = '';
+      const files = fileInput.files;
+      if (files.length === 0) {
+        selectedList.innerHTML = '<li style="color: gray;">(no file selected)</li>';
+        status.innerText = '⏳ Waiting for file input...';
+        return;
       }
-    };
+      for (const f of files) {
+        const li = document.createElement('li');
+        li.textContent = '📁 ' + f.name;
+        selectedList.appendChild(li);
+      }
+      status.innerText = '📁 Files ready. Click EXECUTE UPLOAD.';
+    });
 
-    xhr.send(formData);
-  });
-
-  // === Matrix rain effect ===
-  const canvas = document.getElementById('matrix-canvas');
-  const ctx = canvas.getContext('2d');
-
-  let width, height;
-  let columns;
-  let drops;
-
-  function initMatrix() {
-    width = window.innerWidth;
-    height = window.innerHeight;
-    canvas.width = width;
-    canvas.height = height;
-
-    const fontSize = 16;
-    columns = Math.floor(width / fontSize);
-    drops = [];
-    for(let i = 0; i < columns; i++) {
-      drops[i] = Math.random() * -1000; // random start position y
-    }
-
-    ctx.font = fontSize + "px monospace";
-  }
-
-  function draw() {
-    ctx.fillStyle = "rgba(0, 0, 0, 0.1)";
-    ctx.fillRect(0, 0, width, height);
-
-    ctx.fillStyle = "#0F0";
-    const fontSize = 16;
-
-    for(let i = 0; i < columns; i++) {
-      const text = String.fromCharCode(0x30A0 + Math.random() * 96);
-      ctx.fillText(text, i * fontSize, drops[i] * fontSize);
-
-      if(drops[i] * fontSize > height && Math.random() > 0.975) {
-        drops[i] = 0;
+    document.getElementById('upload-form').addEventListener('submit', function(e) {
+      e.preventDefault();
+      const formData = new FormData();
+      for (const f of fileInput.files) {
+        formData.append('file', f);
       }
 
-      drops[i] += 1;
-    }
-  }
+      const xhr = new XMLHttpRequest();
+      xhr.open('POST', '/', true);
 
-  window.addEventListener('resize', () => {
-    initMatrix();
-  });
+      xhr.upload.onprogress = function(e) {
+        if (e.lengthComputable) {
+          const percent = (e.loaded / e.total) * 100;
+          document.getElementById('progress-bar').style.width = percent + '%';
+          status.innerText = '🚀 Uploading... ' + Math.floor(percent) + '%';
+        }
+      };
 
-  window.onload = () => {
-    initMatrix();
-    setInterval(draw, 33);
-  };
-</script>
+      xhr.onload = function() {
+        if (xhr.status === 200) {
+          status.innerText = '✔️ Upload complete.';
+          document.getElementById('progress-bar').style.width = '0%';
+          document.getElementById('upload-form').reset();
+          selectedList.innerHTML = '<li style="color: gray;">(no file selected)</li>';
+          const files = JSON.parse(xhr.responseText);
+          const list = document.getElementById('file-list');
+          files.forEach(file => {
+            const li = document.createElement('li');
+            li.innerHTML = `<span>${file}</span><a class="download-btn" href="/uploads/${file}" download>DOWNLOAD</a>`;
+            list.appendChild(li);
+          });
+        } else {
+          status.innerText = '❌ Upload failed.';
+        }
+      };
+
+      xhr.send(formData);
+    });
+  </script>
 </body>
 </html>

@@ -3,57 +3,71 @@
 ## 🔥 Keunggulan Utama:
 
 1. 🚫 **Tanpa Internet, Tetap Jalan**  
-   Cukup WiFi lokal (hotspot HP atau router rumah)  
-   Bisa dipakai offline total  
-   Cocok banget buat situasi darurat atau hemat kuota  
+   - Cukup WiFi lokal (hotspot HP atau router rumah)  
+   - Bisa dipakai **offline total**  
+   - Cocok banget buat situasi darurat atau hemat kuota  
 
 2. 📱➡💻 **Upload File Langsung dari HP ke PC**  
-   Tinggal buka QR code dari HP, scan, dan langsung upload  
-   Bisa kirim foto, video, PDF, ZIP, atau apapun  
-   Nggak perlu kabel USB, Bluetooth, atau cloud ribet-ribet  
+   - Tinggal scan QR code dari HP  
+   - Kirim foto, video, PDF, ZIP, atau apapun  
+   - **Tanpa kabel USB, Bluetooth, atau cloud**
 
 3. ⚡ **Cepat, Ringan, dan Bebas Ribet**  
-   Gak pake embel-embel UI berat atau login  
-   Cuma buka browser → upload file → beres  
-   Jalan cepat bahkan di PC kentang  
+   - Tanpa login, tanpa UI berat  
+   - Buka browser → Upload → Beres  
+   - **Bisa jalan di PC kentang**
 
 4. 🧠 **Self-Hosted, Privasi Terjaga**  
-   Semua file tetap di PC sendiri  
-   Tidak lewat server luar seperti Google Drive atau Telegram  
-   Aman buat file sensitif  
+   - Semua file **tetap di PC sendiri**  
+   - Tidak lewat Google Drive, Telegram, dll  
+   - Aman buat file sensitif
 
 5. 🎯 **Langsung Siap Pakai**  
-   Tinggal buka `jalankan_server.exe`, QR muncul  
-   Scan dari HP → upload → file langsung nyangkut di folder `uploads/`  
+   - Tinggal buka `transferlan.exe`, QR langsung muncul  
+   - Scan → upload → file langsung masuk ke folder `uploads/`
 
 6. 🔒 **Firewall & VPN Checker Otomatis**  
-   Script `.bat` cerdas: deteksi Cloudflare WARP dan firewall  
-   Kalau setting belum siap, otomatis kasih peringatan  
-   Minim error buat pemula  
+   - Script `.bat` pintar: deteksi Cloudflare WARP & firewall  
+   - Kasih peringatan kalau setting belum siap  
+   - **Anti error, cocok buat pemula**
 
 7. 💻 **Bisa Dijadikan .EXE**  
-   Proyek ini bisa dikompilasi jadi aplikasi `.exe` dengan ikon sendiri  
-   Gampang dibagikan dan dipakai bahkan tanpa Python  
+   - Sudah tersedia sebagai `transferlan.exe`  
+   - Gampang disebar & dipakai bahkan tanpa Python
 
 ---
 
-## 📦 Cocok Buat Siapa?  
+## 📦 Cocok Buat Siapa?
 
 - Mahasiswa yang sering kirim file dari HP ke laptop  
 - Teknisi yang pengen transfer file antar device tanpa kabel  
-- User rumahan yang pengen metode simpel, cepet, dan tanpa ribet  
+- User rumahan yang pengen solusi simpel dan cepat  
 
 ---
 
-## ⚠️ Catatan Penting Mengenai Privasi  
+## 🛠️ Cara Pakai:
 
-Saat menggunakan software ini, kami akan **mencatat alamat IP dan waktu penggunaan** sebagai bagian dari pengelolaan server. Data ini digunakan untuk keperluan pemantauan dan keamanan.  
-Untuk komunikasi lebih lanjut atau bantuan teknis, kamu bisa menghubungi kami di Discord:  
-[Gabung Discord Kami](https://discord.gg/WTAhZ8Z3rA)  
+1. Jalankan `File Transfer Lan . exe `
+2. Pilih gaya bahasa/kepribadian saat pertama kali
+3. QR Code langsung muncul di terminal
+4. Scan QR dari HP → upload file lewat browser
+5. File otomatis tersimpan di folder `uploads/`
 
-Dengan menggunakan software ini, berarti kamu setuju dengan pencatatan tersebut.  
+---
+
+## ⚠️ Catatan Privasi & Ketentuan Penggunaan
+
+- Saat kamu menjalankan server, sistem akan mencatat:
+  - **IP lokal kamu**
+  - **Waktu penggunaan**
+- Ini dilakukan untuk kebutuhan keamanan dan pemantauan sistem.
+
+🎯 Dengan menggunakan software ini, kamu **dianggap telah menyetujui** pencatatan tersebut.
+
+📞 Untuk bantuan atau komunitas, silakan gabung ke Discord:  
+👉 [https://discord.gg/WTAhZ8Z3rA](https://discord.gg/WTAhZ8Z3rA)
 
 ---
 
 Terima kasih telah menggunakan aplikasi kami!  
-Semoga pekerjaanmu semakin mudah dan praktis. 🙏
+Semoga file-mu lebih cepat nyampe tanpa ribet. 🙏
