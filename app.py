@@ -1,9 +1,10 @@
-from flask import Flask, request, render_template, jsonify, send_file
+from flask import Flask, request, render_template, jsonify, send_file, send_from_directory
 from colorama import Fore, Style, init
 from waitress import serve
 import os, socket, qrcode, datetime, requests, configparser
 from dotenv import load_dotenv
 from io import BytesIO
+from werkzeug.utils import secure_filename
 
 # === Inisialisasi & Konfigurasi Awal ===
 init(autoreset=True)
@@ -16,6 +17,7 @@ if not os.path.exists(UPLOAD_FOLDER):
 
 DISCORD_WEBHOOK_URL = os.getenv("DISCORD_WEBHOOK_URL")
 
+# === Helper ===
 def get_language_mode():
     config = configparser.ConfigParser()
     config.read("config.ini")
@@ -89,6 +91,7 @@ def kirim_notif_ke_discord(ip):
     except Exception as e:
         print(f"❌ Error webhook: {e}")
 
+# === ROUTES ===
 @app.route('/')
 def upload_form():
     files = os.listdir(UPLOAD_FOLDER)
@@ -107,7 +110,7 @@ def upload_file():
 
     for file in files:
         if file and file.filename:
-            filename = file.filename
+            filename = secure_filename(file.filename)
             filepath = os.path.join(UPLOAD_FOLDER, filename)
             file.save(filepath)
             processed.append(filename)
@@ -119,10 +122,15 @@ def upload_file():
 
     return jsonify(processed)
 
+@app.route('/uploads/<path:filename>')
+def uploaded_file(filename):
+    return send_from_directory(UPLOAD_FOLDER, filename, as_attachment=True)
+
 @app.route('/readme')
 def readme():
     return send_file('README.md', mimetype='text/markdown')
 
+# === RUN ===
 if __name__ == '__main__':
     ip = get_local_ip()
     kirim_notif_ke_discord(ip)
