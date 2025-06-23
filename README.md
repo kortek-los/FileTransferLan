@@ -1,103 +1,98 @@
-⚡ FileTransferLan — Upload dari HP ke PC via WiFi (Offline Mode)
-🔥 Keunggulan Utama
-🚫 Tanpa Internet, Tetap Jalan
+# 🚀 FileTransferLan — Upload dari HP ke PC via WiFi (Offline Mode)
 
-Cukup pakai WiFi lokal (hotspot HP atau router rumah)
+Solusi ringan dan cepat untuk kirim file dari HP ke PC tanpa internet, tanpa kabel, tanpa ribet.
 
-Bisa jalan offline total
+---
 
-Cocok untuk situasi darurat atau hemat kuota
+## 🔥 Keunggulan Utama
 
-📱➡💻 Upload File Langsung dari HP ke PC
+1. 🚫 **Tanpa Internet, Tetap Jalan**  
+   - Cukup pakai WiFi lokal (hotspot HP atau router rumah)  
+   - Bisa dipakai **offline total**  
+   - Cocok banget buat situasi darurat atau hemat kuota
 
-Tinggal scan QR code dari HP
+2. 📱➡💻 **Upload File Langsung dari HP ke PC**  
+   - Tinggal scan QR code dari HP  
+   - Kirim foto, video, PDF, ZIP, dan file lainnya  
+   - **Tanpa kabel USB, Bluetooth, atau cloud**
 
-Kirim foto, video, PDF, ZIP, dan lainnya
+3. ⚡ **Cepat, Ringan, dan Bebas Ribet**  
+   - Tidak perlu login  
+   - Tidak ada UI berat  
+   - Jalan cepat bahkan di **PC kentang**
 
-Tanpa kabel, Bluetooth, atau cloud
+4. 🧠 **Self-Hosted, Privasi Terjaga**  
+   - Semua file **tetap di PC kamu**  
+   - Tidak lewat Google Drive, Telegram, atau server lain  
+   - Aman untuk file sensitif
 
-⚡ Cepat, Ringan, dan Bebas Ribet
+5. 🎯 **Langsung Siap Pakai**  
+   - Cukup jalankan `transferlan.exe`  
+   - QR Code langsung muncul  
+   - Scan → Upload → File tersimpan di folder `uploads/`
 
-Tanpa login, tanpa UI berat
+6. 🔒 **Firewall & VPN Checker Otomatis**  
+   - Script pintar deteksi Cloudflare WARP & firewall  
+   - Kasih peringatan kalau belum siap  
+   - **Anti error, cocok buat pemula**
 
-Buka browser → upload → beres
+7. 💻 **Bisa Dijadikan .EXE**  
+   - Sudah tersedia sebagai `transferlan.exe`  
+   - Gampang disebar dan dijalankan, bahkan tanpa Python
 
-Cocok untuk PC spek rendah sekalipun
+---
 
-🧠 Self-Hosted, Privasi Terjaga
+## 📦 Cocok Buat Siapa?
 
-Semua file tersimpan di PC sendiri
+- Mahasiswa yang sering kirim file dari HP ke laptop  
+- Teknisi yang perlu transfer file antar device tanpa kabel  
+- Pengguna rumahan yang ingin solusi simpel dan cepat  
+- Kamu yang lagi hemat kuota tapi butuh kirim file besar
 
-Tidak lewat Google Drive, Telegram, dll
+---
 
-Aman untuk file sensitif
+## 🛠️ Cara Pakai
 
-🎯 Langsung Siap Pakai
+1. 📦 **Unduh Installer**  
+   [Klik di sini untuk download](https://github.com/kortek-los/FileTransferLan/blob/main/FileTransferLanSetup.exe)
 
-Buka transferlan.exe, QR langsung muncul
+2. 🔧 **Jalankan Setup**  
+   Instal aplikasi seperti biasa menggunakan file `FileTransferLanSetup.exe`
 
-Scan → upload → file langsung masuk ke folder uploads/
+3. 🚀 **Buka Aplikasinya**  
+   Jalankan `transferlan.exe` dari desktop atau folder instalasi
 
-🔒 Cek Firewall & VPN Otomatis
+4. 📲 **Scan QR Code dari HP**  
+   - Setelah dijalankan, QR Code akan muncul di terminal  
+   - Scan menggunakan HP, lalu akan terbuka halaman upload di browser
 
-Script .bat akan cek WARP & Firewall otomatis
+5. ⬆ **Upload File**  
+   - Pilih file dari HP dan kirim  
+   - File langsung masuk ke folder `uploads/` di PC
 
-Kasih peringatan kalau belum siap
+---
 
-Anti error, bahkan buat pemula
+## ⚠️ Privasi & Ketentuan Penggunaan
 
-💻 Sudah Bisa Jadi .EXE
+Saat menggunakan aplikasi ini, sistem akan mencatat:
 
-Sudah tersedia sebagai file transferlan.exe
+- 📍 Alamat IP lokal
+- 🕒 Waktu penggunaan
 
-Bisa digunakan tanpa harus install Python
+Tujuannya untuk **keamanan & pemantauan sistem**.
 
-📦 Cocok Buat Siapa?
-🎓 Mahasiswa yang sering kirim file HP ↔ Laptop
+Dengan menjalankan software ini, kamu **dianggap menyetujui** pencatatan tersebut.
 
-🔧 Teknisi yang transfer file antar device tanpa kabel
+---
 
-🏠 Pengguna rumahan yang butuh solusi simpel & cepat
+## 💬 Komunitas & Bantuan
 
-🛠️ Cara Pakai
-💾 Download & Install
-Unduh installer di sini:
-👉 FileTransferLanSetup.exe
-Jalankan file setup dan ikuti wizard hingga selesai.
+Butuh bantuan atau ingin bergabung dengan komunitas pengguna?
 
-🚀 Jalankan Aplikasi
-Setelah instalasi selesai, buka File Transfer Lan.exe dari desktop atau Start Menu.
+🎯 Gabung Discord:  
+👉 [https://discord.gg/WTAhZ8Z3rA](https://discord.gg/WTAhZ8Z3rA)
 
-🗣️ Pilih Gaya Bahasa / Kepribadian
-Saat pertama kali dijalankan, kamu akan diminta memilih:
+---
 
-Bahasa Kasar (Hacker Style)
-
-Bahasa Wibu Moe Moe
-
-Bahasa Profesional
-
-📱 Scan QR dari HP
-QR code akan muncul di terminal.
-Scan QR itu dengan kamera HP-mu.
-
-🔼 Upload File dari HP
-Setelah scan, kamu akan dibawa ke halaman upload.
-Pilih file → kirim → file langsung tersimpan di folder uploads/ di PC-mu.
-
-⚠️ Privasi & Ketentuan Penggunaan
-Saat kamu menjalankan server, sistem akan mencatat:
-
-Alamat IP lokal
-
-Waktu penggunaan
-
-Ini digunakan untuk pemantauan dan keamanan.
-
-🎯 Dengan menggunakan aplikasi ini, kamu dianggap menyetujui pencatatan tersebut.
-
-📞 Gabung Komunitas & Bantuan
-📍 Discord → https://discord.gg/WTAhZ8Z3rA
-
-Terima kasih telah menggunakan FileTransferLan!
-Semoga file-mu cepat nyampe dan hidupmu bebas ribet. 🙌
+Terima kasih telah menggunakan FileTransferLan!  
+Semoga kerjaanmu lebih ringan dan cepat tanpa kabel ribet. 🙏
