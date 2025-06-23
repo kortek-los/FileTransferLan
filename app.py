@@ -5,9 +5,14 @@ import os, socket, qrcode, datetime, requests, configparser
 from dotenv import load_dotenv
 from io import BytesIO
 
+# === Inisialisasi & Konfigurasi Awal ===
 init(autoreset=True)
 load_dotenv()
 app = Flask(__name__)
+
+UPLOAD_FOLDER = "uploads"
+if not os.path.exists(UPLOAD_FOLDER):
+    os.makedirs(UPLOAD_FOLDER)
 
 DISCORD_WEBHOOK_URL = os.getenv("DISCORD_WEBHOOK_URL")
 
@@ -86,13 +91,14 @@ def kirim_notif_ke_discord(ip):
 
 @app.route('/')
 def upload_form():
+    files = os.listdir(UPLOAD_FOLDER)
     template_map = {
         "kasar": "hacker.html",
         "wibu": "wibu.html",
         "profesional": "pro.html"
     }
     template_name = template_map.get(get_language_mode(), "wibu.html")
-    return render_template(template_name, files=[])
+    return render_template(template_name, files=files)
 
 @app.route('/', methods=['POST'])
 def upload_file():
@@ -102,12 +108,13 @@ def upload_file():
     for file in files:
         if file and file.filename:
             filename = file.filename
-            data = file.read()
+            filepath = os.path.join(UPLOAD_FOLDER, filename)
+            file.save(filepath)
             processed.append(filename)
             print(get_color() + say(
-                f"(✿◕‿◕) File '{filename}' diterima~ Ukuran: {len(data)} byte",
-                f"[UPLOAD] '{filename}' diterima, {len(data)} byte.",
-                f"[UPLOAD] '{filename}' berhasil diproses ({len(data)} byte)."
+                f"(✿◕‿◕) File '{filename}' disimpan ke '{UPLOAD_FOLDER}/'",
+                f"[UPLOAD] '{filename}' disimpan di folder '{UPLOAD_FOLDER}/'",
+                f"[UPLOAD] File '{filename}' berhasil disimpan."
             ))
 
     return jsonify(processed)
